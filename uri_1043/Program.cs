@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace uri_1043
 {
@@ -8,18 +9,19 @@ namespace uri_1043
         {
             string[] lados = Console.ReadLine().Split(' ');
 
-            double lado1 = double.Parse(lados[0]);
-            double lado2 = double.Parse(lados[1]);
-            double lado3 = double.Parse(lados[2]);
-            double perimetroTriangulo = 0;
+            double A = double.Parse(lados[0], CultureInfo.InvariantCulture);
+            double B = double.Parse(lados[1], CultureInfo.InvariantCulture);
+            double C = double.Parse(lados[2], CultureInfo.InvariantCulture);
 
-            if (lado1 + lado2 > lado3 || lado2 + lado3 > lado1 || lado3 + lado1 > lado2)
+            if (A + B > C && B + C > A && A + C > B)
             {
-                perimetroTriangulo = lado1 + lado2 + lado3;
+                double perimetroTriangulo = (A + B + C);
+                Console.WriteLine("Perimetro = " + perimetroTriangulo.ToString("F1", CultureInfo.InvariantCulture));
             }
             else
             {
-               
+                double areaTrapezio = (A + B) * C / 2;
+                Console.WriteLine("Area = " + areaTrapezio.ToString("F1", CultureInfo.InvariantCulture));
             }
         }
     }
